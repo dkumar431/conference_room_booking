@@ -1,0 +1,13 @@
+<table border="1px">
+<% @bookings.each do |meeting| %>
+    <tr>
+        <td><%= (meeting.start_time.localtime - 1*60).strftime('%a %b %d %Y %r %Z') %></td>
+        <td><%= (meeting.end_time.localtime).strftime('%a %b %d %Y %r %Z ') %></td>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.status %></td>
+        <% if meeting.booking_status_id == 1 || meeting.booking_status_id == 3 %>
+            <td><%= link_to "Cancel", booking_path(meeting.id), method: :delete %></td>
+        <% end %>
+    </tr>
+<% end %>
+</table>

@@ -1,0 +1,11 @@
+<%= form_for @room do |r| %>
+    Name: <%= r.text_field :name %>
+    <br>
+    Type: <%= r.select :room_type, ConferenceRoom::ROOM_TYPES %>
+    <br>
+    Size: <%= r.text_field :size %>
+    <br>
+    Conference Bridge Number: <%= r.text_field :size %>
+    <br>
+    <%= r.submit %>
+<% end %>

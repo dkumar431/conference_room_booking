@@ -1,0 +1,12 @@
+<%= form_for @search, remote: true do |s| %>
+    Date: <%= s.text_field :date %>
+    <br>
+    From: <%= s.text_field :start_time, class: :time %>
+    
+    To:  <%= s.text_field :end_time, class: :time %>
+    <br>
+    <%= s.submit :Search %>
+<% end %>
+
+<div id="search_results">
+</div>

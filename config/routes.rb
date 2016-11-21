@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  resources :bookings do 
+    collection do 
+      get 'my_bookings'
+    end
+
+  end
+  resources :holidays, only: [:index, :new, :create]
+  resources :conference_rooms
+  resources :dashboards, only: [:show]
+  resources :searches
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'dashboards#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

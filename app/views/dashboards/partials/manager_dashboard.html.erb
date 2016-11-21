@@ -1,0 +1,11 @@
+<%= flash[:alert] %>
+<h1>Manager Dashboard</h1>
+
+<ul>
+    <li><%= link_to :Holidays, holidays_path %></li>
+    <% if can? :create, Holiday %>
+        <li><%= link_to "Add Holiday", new_holiday_path %></li>
+    <% end %>    
+    <li><%= link_to "Conference Rooms", conference_rooms_path %></li>
+    <li><%= link_to "Add Conference Room", new_conference_room_path %></li>
+</ul>

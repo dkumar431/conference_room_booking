@@ -1,0 +1,26 @@
+<table border="1px">
+<% if results.count == 0 %>
+    Conference rooms not available during weekends.
+<% end %>
+
+<% @search_results.each do |room| %>
+    <tr>
+        <td><%= room["name"] %></td>
+        <td><%= room["size"] %></td>
+        <td><%= room["room_type"] %></td>
+        <td><%= room["bridge_no"] %></td>
+        <td><%= is_available? room["no_of_bookings"] %></td>
+        <td>
+            <%= form_for @booking, remote: true do |b| %>
+                <%= b.hidden_field :date %>
+                <%= b.hidden_field :start_time %>
+                <%= b.hidden_field :end_time %>
+                <%= b.hidden_field :conference_room_id, value: room["id"] %>
+                <%= b.hidden_field :user_id, value: current_user.id %>
+                <%= b.submit :Book %>
+            <% end %>
+        </td>
+    </tr>
+<% end %>
+</table>
+

@@ -1,0 +1,7 @@
+<%= form_for @holiday do |h| %>
+    Date: <%= h.text_field :date %>
+    <br>
+    Reason: <%= h.text_area :reason %>
+    <br>
+    <%= h.submit %>
+<% end %>
